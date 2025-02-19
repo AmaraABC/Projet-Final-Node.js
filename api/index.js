@@ -26,11 +26,31 @@ app.get('/podcasts', async (req, res) => {
     }
 });
 
-// Endpoints pour afficher tous les playlists
-app.get('/playlists', async (req, res) => {
+// Endpoints pour afficher tous les livres audio
+app.get('/books', async (req, res) => {
     try {
-        const playlists = await Playlist.getAllPlaylists();
-        res.status(200).json(playlists);
+        const books = await LivreAudio.getAllBooks();
+        res.status(200).json(books);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+});
+
+// Endpoints pour afficher tous les concerts
+app.get('/concerts', async (req, res) => {
+    try {
+        const concerts = await Concert.getAllGigs();
+        res.status(200).json(concerts);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+});
+
+// Endpoints pour afficher toutes les albums
+app.get('/albums', async (req, res) => {
+    try {
+        const albums = await Playlist.getAllAlbums();
+        res.status(200).json(albums);
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
