@@ -1,68 +1,65 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur Just Music</title>
+    <title>Just Music - Accueil</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Shrikhand&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-gray-100 font-['Inter']">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <style>
+        .music-note {
+            animation: bounce 1.5s infinite;
+        }
 
-    <header class="bg-white shadow-lg flex items-center p-5">
-      <img src="frontend/Images/JUST MUSIC1.PNG" alt="Logo" class="h-16">
-
-      <div class="ml-auto flex space-x-32 pl-32">
-        <a href="page.html" class="font-medium text-xl text-gray-800 hover:text-purple-500 transition">Accueil</a>
-        <a href="page.html" class="font-medium text-xl text-gray-800 hover:text-purple-500 transition">Bibliothèque</a>
-        <a href="page.html" class="font-medium text-xl text-gray-800 hover:text-purple-500 transition">Contact</a>
-      </div>
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-purple-300">
+    <header class="bg-white shadow-lg flex items-center justify-between p-5 font-['Shrikhand']">
+        <div class="flex items-center">
+            <img src="frontend/Images/JUST MUSIC1.PNG" alt="Logo" class="h-16">
+            <span class="ml-1 text-2xl music-note">🎵</span>
+        </div>
+        <nav class="flex space-x-16">
+            <a href="index.html" class="text-lg font-medium hover:text-purple-500">Accueil</a>
+            <a href="frontend/page.html" class="text-lg font-medium hover:text-purple-500">Bibliothèque</a>
+            <a href="frontend/page.html" class="text-lg font-medium hover:text-purple-500">À propos</a>
+            <a href="frontend/login.html" class="text-lg font-medium bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-700">Se connecter</a>
+        </nav>
     </header>
 
-    <div class="flex flex-col items-center p-32 min-h-screen bg-purple-200">
-      <h1 class="text-4xl mb-8 text-center font-medium text-gray-800 shadow-xs font-['Shrikhand']">Bienvenue sur Just Music
-        <img alt="étoile logo" src="frontend/Images/Star.png" class="h-10 inline-block animate-bounce">
-      </h1>
-      <p class="text-xl mb-6 text-center text-gray-600">Découvrez de la musique, des podcasts, des livres audios et bien plus encore.</p>
-      
-      <div class="flex items-center space-x-10">
-
-        <div id="root" class="flex-1 rounded-lg p-6 bg-white shadow-lg">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Se connecter</h2>
-          <form>
-            <input type="text" placeholder="Nom d'utilisateur" class="border p-2 rounded w-full shadow-lg mb-4">
-            <input type="password" placeholder="Mot de passe" class="border p-2 rounded w-full shadow-lg mb-4">
-            <button type="submit" class="bg-purple-500 font-semibold text-white px-4 py-2 rounded hover:bg-purple-700 transition shadow-md">Se connecter</button>
-          </form>
-
-          <p class="mt-4 text-center text-gray-600">
-            Pas encore inscrit ? <a href="frontend/register.html" class="text-purple-500 hover:text-purple-700">S'inscrire</a>
-          </p>
+    <main class="flex items-center justify-center min-h-screen px-10">
+        <div class="w-1/2 flex justify-center">
+            <img src="frontend/Images/JUST MUSIC.png" alt="Image Music" class="rounded-lg shadow-lg">
+        </div>
+        <div class="w-1/2 text-center">
+            <h1 class="text-4xl text-purple-700 font-bold font-['Shrikhand']">Découvrez et écoutez votre musique préférée</h1>
+            <p class="text-lg text-gray-800 mt-4">Explorez une vaste bibliothèque de musiques, podcasts et livres audios. 
+                Créez vos propres playlists et partagez-les avec vos amis !</p>
+            <a href="frontend/login.html" class="mt-6 inline-block bg-purple-600 text-white px-6 py-3 rounded text-lg hover:bg-purple-800 transition font-['Shrikhand']">
+                Rejoignez-nous !
+            </a>
         </div>
 
-        <div class="flex-1 bg-purple-200 rounded-lg w-1/6 mx-auto">
-          <img src="frontend/Images/JUST MUSIC.png" alt="Image Music" class="rounded-lg h-auto mx-auto shadow-lg">
-        </div>
-      </div>
-    </div>
+
+
+    </main>
 
     <footer class="bg-white shadow-lg p-4 text-center">
-        <a class="text-lg text-gray-700" href="https://instagram.com">Instagram
+        <a class="text-lg text-gray-700" href="https://instagram.com">
             <img src="frontend/Images/insta.jpg " alt="Logo Instagram" class="h-10 w-10 inline-block rounded-lg">
         </a>
-        <a class="text-lg text-gray-700" href="https://facebook.com">Facebook
+        <a class="text-lg text-gray-700" href="https://facebook.com">
             <img src="frontend/Images/facebook.png" alt="Logo Facebook" class="h-10 w-10 inline-block rounded-lg">
         </a>
-        <a class="text-lg text-gray-700" href="https://x.com">Twitter
+        <a class="text-lg text-gray-700" href="https://x.com">
             <img src="frontend/Images/twitter.avif" alt="Logo Twitter" class="h-10 w-10 inline-block rounded-lg">
         </a>
       <p class="text-sm text-gray-600">© 2025 JustMusic. Tous droits réservés.</p>
     </footer>
 
-  
 </body>
-
 </html>
