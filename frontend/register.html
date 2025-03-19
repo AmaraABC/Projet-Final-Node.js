@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="https://cdn.tailwindcss.com" rel="stylesheet"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <header class="bg-white shadow-lg flex items-center p-5">
+      <img src="src/images/JUST MUSIC1.PNG" alt="Logo" class="h-16 mx-auto">
+      <div class="flex space-x-40 ml-auto">
+        <a href="page.html" class="font-['Inter'] font-medium text-xl">Lien</a>
+        <a href="page.html" class="font-['Inter'] font-medium text-xl">Lien</a>
+        <a href="page.html" class="font-['Inter'] font-medium text-xl">Lien</a>
+      </div>
+    </header>
+    <div class="flex flex-col items-center p-32 min-h-screen bg-purple-300">
+      <h1 class="text-3xl mb-8 shadow-xs font-['Inter']  font-normal">Bienvenue ! Première Fois sur notre Site ?</h1>
+      <div class="flex mx-auto">
+        <div id="root" class="flex-1 rounded-lg "></div>
+        <div class="flex-1 bg-purple-300 rounded- w-1/6 mx-auto">
+          <img src="src/images/JUST MUSIC.png" alt="Image Music" class="rounded-lg h-auto mx-auto">
+        </div>
+      </div>
+    </div>
+    <footer class="bg-white shadow-lg p-4 text-center">
+      <p class="font-['Inter'] text-sm">© 2025 JustMusic. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { h, createApp } from "./node_modules/vue/dist/vue.esm-browser.prod.js";
+
+        const Login = {
+          data(){
+            return {
+              username : "alex",
+              password :"sarah",
+            }
+          },
+          methods: {
+            submitForm(event) {
+              event.preventDefault();
+              alert("Connexion réussie");
+            }
+          },
+          render() {
+            return h('div', { class: 'container mx-auto p-6' }, [
+              h('form', { class: 'bg-white p-4 shadow-lg rounded', onSubmit: this.submitForm }, [
+                h('input', {
+                  placeholder: 'Nom d\'utilisateur',
+                  type: 'text',
+                  class : 'border p-2 rounded w-full shadow-lg mb-2',
+                  onInput: event => this.username = event.target.value
+                }),
+                h('input', {
+                  placeholder: 'Mot de passe',
+                  type: 'password',
+                  class : 'border p-2 rounded w-full mb-4 shadow-lg',
+                  onInput: event => this.password = event.target.value
+                }),
+                h('button', 
+                { type: 'submit',
+                  class: 'bg-purple-500 font-semibold text-white px-4 py-2 rounded hover:bg-purple-700 shadow-lg over:shadow-md' ,
+                  }, "S'inscrire"),
+              ]),
+            ]);
+          }
+        };
+
+        createApp(Login).mount('#root')
+    </script>
+  </body>
+</html>
