@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur Just Music</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Shrikhand&display=swap"
+        rel="stylesheet">
+    <style>
+        .music-note {
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-['Inter']">
+
+    <header class="bg-white shadow-lg flex items-center p-5 font-['Shrikhand'] ">
+        <div class="flex items-center">
+            <img src="Images/JUST MUSIC1.PNG" alt="Logo" class="h-16">
+            <span class="ml-1 text-2xl music-note">🎵</span>
+        </div>
+        <div class="ml-auto flex space-x-32 pl-32">
+            <a href="../index.html"
+                class="font-medium text-xl text-gray-800 hover:text-purple-500 transition ">Accueil</a>
+            <a href="library.html"
+                class="font-medium text-xl text-gray-800 hover:text-purple-500 transition ">Bibliothèque</a>
+            <a href="page.html" class="font-medium text-xl text-gray-800 hover:text-purple-500 transition">Contact</a>
+        </div>
+    </header>
+
+    <footer class="bg-white shadow-lg p-4 text-center">
+        <a class="text-lg text-gray-700" href="https://instagram.com">
+            <img src="Images/insta.jpg " alt="Logo Instagram" class="h-10 w-10 inline-block rounded-lg">
+        </a>
+        <a class="text-lg text-gray-700" href="https://facebook.com">
+            <img src="Images/facebook.png" alt="Logo Facebook" class="h-10 w-10 inline-block rounded-lg">
+        </a>
+        <a class="text-lg text-gray-700" href="https://x.com">
+            <img src="Images/twitter.avif" alt="Logo Twitter" class="h-10 w-10 inline-block rounded-lg">
+        </a>
+        <p class="text-sm text-gray-600">© 2025 JustMusic. Tous droits réservés.</p>
+    </footer>
+
+
+</body>
+
+</html>
