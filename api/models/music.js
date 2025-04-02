@@ -22,6 +22,12 @@ class Music {
         return result.rows[0];
     }
 
+    // Récupérer des musiques en fonction d'un genre
+    static async getMusicsByGenre(genre) {
+        const result = await pool.query('SELECT * FROM musique WHERE id_musique = $1', [genre]);
+        return result.rows[0];
+    }
+
     // Ajouter une musique
     static async addMusic({ nom, contenu, genre, artiste, duree }) {
         const result = await pool.query(

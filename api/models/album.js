@@ -22,6 +22,12 @@ class Album {
         return result.rows[0];
     }
 
+    // Récupérer des albums en fonction d'un genre
+    static async getAlbumsByGenre(genre) {
+        const result = await pool.query('SELECT * FROM album WHERE genre = $1', [genre]);
+        return result.rows[0];
+    }
+
     // Ajouter un album
     static async addAlbum({ nom, contenu, genre, artiste, duree }) {
         const result = await pool.query(

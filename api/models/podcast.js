@@ -18,7 +18,13 @@ class Podcast {
 
     // Récupérer un podcast
     static async getPodcastById(id) {
-        const result = await pool.query('SELECT * FROM livre WHERE id_podcast = $1', [id]);
+        const result = await pool.query('SELECT * FROM podcast WHERE id_podcast = $1', [id]);
+        return result.rows[0];
+    }
+
+    // Récupérer des podcasts en fonction d'un genre
+    static async getPodcastsByGenre(genre) {
+        const result = await pool.query('SELECT * FROM podcast WHERE genre = $1', [genre]);
         return result.rows[0];
     }
 
@@ -32,7 +38,7 @@ class Podcast {
 
     // Supprimer un podcast
     static async deletePodcast(id) {
-        const result = await pool.query('DELETE FROM book WHERE id_podcast = $1', [id]);
+        const result = await pool.query('DELETE FROM podcast WHERE id_podcast = $1', [id]);
     }
 };
 

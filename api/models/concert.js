@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 class Concert {
-    // Retourner tous les livres audio
+    // Retourner tous les concerts
     static async getAllConcerts() {
         const result = await pool.query('SELECT * FROM concert');
         return result.rows;
@@ -18,7 +18,13 @@ class Concert {
 
     // Récupérer un concert
     static async getConcertById(id) {
-        const result = await pool.query('SELECT * FROM livre WHERE id_concert = $1', [id]);
+        const result = await pool.query('SELECT * FROM concert WHERE id_concert = $1', [id]);
+        return result.rows[0];
+    }
+
+    // Récupérer des concerts en fonction d'un genre
+    static async getConcertsByGenre(genre) {
+        const result = await pool.query('SELECT * FROM concert WHERE genre = $1', [id]);
         return result.rows[0];
     }
 
@@ -32,7 +38,7 @@ class Concert {
 
     // Supprimer un concert
     static async deleteConcert(id) {
-        const result = await pool.query('DELETE FROM book WHERE id_concert = $1', [id]);
+        const result = await pool.query('DELETE FROM concert WHERE id_concert = $1', [id]);
     }
 };
 

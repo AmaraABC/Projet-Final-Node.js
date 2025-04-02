@@ -22,6 +22,12 @@ class Book {
         return result.rows[0];
     }
 
+    // Récupérer des livres audio en fonction d'un genre
+    static async getBooksByGenre(genre) {
+        const result = await pool.query('SELECT * FROM livre WHERE genre = $1', [genre]);
+        return result.rows[0];
+    }
+
     // Ajouter un livre audio
     static async addBook({ nom, contenu, genre, artiste, duree }) {
         const result = await pool.query(
