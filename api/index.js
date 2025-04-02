@@ -4,6 +4,7 @@ const Music = require('./models/music');
 const Podcast = require('./models/podcast');
 const Album = require('./models/album');
 const Concert = require('./models/concert');
+const Ticket = require('./models/ticket');
 require('dotenv').config();
 const app = express();
 
@@ -242,6 +243,43 @@ app.delete('/concerts/delete/:id', async (req, res) => {
     }
 })
 
+// Endpoints (tickets SAV)
+app.get('/tickets', async (req, res) => {
+    try {
+        const tickets = await Ticket.getAllTickets();
+        res.status(200).json(tickets);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+});
+
+app.get('/tickets/:id', async (req, res) => {
+    try {
+        const ticket = await Ticket.getTicketById(req.params.id);
+        ticket ? res.status(200).json(ticket) : res.status(404).json('Ticket introuvable :<');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/tickets/add', async (req, res) => {
+    try {
+        const newTicket = await Ticket.addTicket(req.body);
+        res.status(201).json(newTicket);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.delete('/tickets/delete/:id', async (req, res) => {
+    try {
+        const deletedTicket = await Ticket.deleteTicket(req.params.id);
+        res.status(204).json(deletedTicket);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
 /*Endpoint pour accéder à la bibliothèque de l'application
 app.get('/library', async (req, res) => {
     try {
@@ -253,7 +291,7 @@ app.get('/library', async (req, res) => {
 });*/
 
 
-// Endpoint pour publier un avis/commentaire
+/* Endpoint pour publier un avis/commentaire
 app.post('/comments/add', async (req, res) => {
     // comments.push(req.body);
     // res.status(200).json(comments);
@@ -277,20 +315,7 @@ app.delete('/users/:id/remove', async (req, res) => {
     // let user = users.find(user => user.id === id);
     // users.splice(users.indexOf(user), 1);
     // res.status(200).json(users);
-});
-
-// Endpoint pour demander de l'aide au service client (ajout de ticket SAV)
-app.post('/tickets/add', async (req, res) => {
-    // tickets.push(req.body);
-    // res.status(200).json(tickets);
-});
-
-// Endpoint pour consulter un ticket SAV en fonction de son identifiant
-app.get('/tickets/:id', async (req, res) => {
-    //const id = parseInt(req.params.id)
-    //const tickets = tickets.find(tickets => tickets.id === id);
-    res.send('Ticket SAV');
-});
+});*/
 
 // Définition d'un port d'écoute
 const PORT = process.env.PORT || 3000;
