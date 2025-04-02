@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur Just Music</title>
+    <title>Bibliothèque - Just Music</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
@@ -49,6 +49,28 @@
         </div>
     </header>
 
+    <!-- Sections pour chaque élément de la bibliothèque -->
+    <div id="musiques" class="section">
+        <h2>Musiques</h2>
+        <div class="content"></div>
+    </div>
+    <div id="podcasts" class="section">
+        <h2>Podcasts</h2>
+        <div class="content"></div>
+    </div>
+    <div id="albums" class="section">
+        <h2>Albums</h2>
+        <div class="content"></div>
+    </div>
+    <div id="concerts" class="section">
+        <h2>Concerts</h2>
+        <div class="content"></div>
+    </div>
+    <div id="livres" class="section">
+        <h2>Livres Audio</h2>
+        <div class="content"></div>
+    </div>
+
     <footer class="bg-white shadow-lg p-4 text-center">
         <a class="text-lg text-gray-700" href="https://instagram.com">
             <img src="Images/insta.jpg " alt="Logo Instagram" class="h-10 w-10 inline-block rounded-lg">
@@ -62,7 +84,36 @@
         <p class="text-sm text-gray-600">© 2025 JustMusic. Tous droits réservés.</p>
     </footer>
 
-
+    <script>
+        async function fetchData(endpoint, id) {
+            try {
+                const res = await fetch(endpoint);
+                const data = await response.json();
+                const div = document.getElementById(id).querySelector('.content');
+                div.innerHTML = data.map(item => `
+                    <div class="justmusic-elem">
+                        <h3>${item.nom}</h3>
+                        <p>
+                            <strong>Artiste :</strong> ${item.artiste}
+                        </p>
+                        <p>
+                            <strong>Description :</strong> ${item.contenu}
+                            <strong>Durée : ${item.duree}</strong>
+                            <em>Genre : ${item.genre}</em>
+                        </p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+        
+        fetchData('/library/musics', 'musiques');
+        fetchData('/library/podcasts', 'podcasts');
+        fetchData('/library/albums', 'albums');
+        fetchData('/library/concerts', 'concerts');
+        fetchData('/library/books', 'livres');
+    </script>
 </body>
 
 </html>
