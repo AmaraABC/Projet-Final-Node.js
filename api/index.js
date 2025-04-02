@@ -31,6 +31,15 @@ app.get('/library/musics/:id', async (req, res) => {
     }
 });
 
+app.get('/library/musics/:genre', async (req, res) => {
+    try {
+        const music = await Music.getMusicsByGenre(req.params.genre);
+        music ? res.status(200).json(music) : res.status(404).json('Musiques non présentes');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.post('/musics/add', async (req, res) => {
     try {
         const newMusic = await Music.addMusic(req.body);
@@ -63,6 +72,15 @@ app.get('/library/podcasts/:id', async (req, res) => {
     try {
         const podcast = await Podcast.getPodcastById(req.params.id);
         podcast ? res.status(200).json(podcast) : res.status(404).json('Podcast non présent');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/library/podcasts/:genre', async (req, res) => {
+    try {
+        const podcast = await Podcast.getPodcastsByGenre(req.params.genre);
+        podcast ? res.status(200).json(podcast) : res.status(404).json('Podcasts non présents');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -105,6 +123,15 @@ app.get('/library/books/:id', async (req, res) => {
     }
 });
 
+app.get('/library/books/:genre', async (req, res) => {
+    try {
+        const book = await Book.getBooksByGenre(req.params.genre);
+        book ? res.status(200).json(book) : res.status(404).json('Livres non présents');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.post('/books/add', async (req, res) => {
     try {
         const newBook = await Book.addBook(req.body);
@@ -142,6 +169,15 @@ app.get('/library/albums/:id', async (req, res) => {
     }
 });
 
+app.get('/library/albums/:genre', async (req, res) => {
+    try {
+        const album = await Album.getAlbumsByGenre(req.params.genre);
+        album ? res.status(200).json(album) : res.status(404).json('Albums inexistants');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.post('/albums/add', async (req, res) => {
     try {
         const newAlbum = await Album.addAlbum(req.body);
@@ -174,6 +210,15 @@ app.get('/library/concerts/:id', async (req, res) => {
     try {
         const concert = await Concert.getConcertById(req.params.id);
         concert ? res.status(200).json(concert) : res.status(404).json('Concert introuvable :<');
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/library/concerts/:genre', async (req, res) => {
+    try {
+        const concert = await Concert.getConcertsByGenre(req.params.genre);
+        concert ? res.status(200).json(concert) : res.status(404).json('Concerts introuvables :<');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
